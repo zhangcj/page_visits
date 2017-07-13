@@ -3,6 +3,7 @@ package com.beecho.easyuse.controller;
 import com.beecho.easyuse.LogModule.*;
 import com.beecho.easyuse.Request.RequestConfigManager;
 import com.beecho.easyuse.Request.RequestProtocol;
+import com.beecho.easyuse.ioc.IocTest;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -48,10 +49,16 @@ public class SampleController {
 //        return result ? "ok" : "err";
 
 
-        RequestConfigManager.manager.setGloableRequestSize(10) // 设置请求文本大小
-        .setGloableRequestFormatJson() // 设置请求为json
-        .setGloableRequestProtocol(new RequestProtocol(RequestProtocol.InternalSoa));
+//        RequestConfigManager.manager.setGloableRequestSize(10) // 设置请求文本大小
+//        .setGloableRequestFormatJson() // 设置请求为json
+//        .setGloableRequestProtocol(new RequestProtocol(RequestProtocol.InternalSoa));
 
+        try {
+            IocTest.baseTest();
+
+        }catch (Exception e){
+            System.out.println("e:"+e.getMessage());
+        }
         return "OK";
     }
 }
